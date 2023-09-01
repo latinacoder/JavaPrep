@@ -23,7 +23,7 @@ public class MethodChallenge {
 
     public static int calculateHighScorePosition(int playerScore) {
 
-        int position = 4; 
+        int position = 4;
 
         if (playerScore >= 1000) {
             position = 1;
@@ -36,7 +36,7 @@ public class MethodChallenge {
         return position; //close return
 
     } // close calculateHighScore method
-} // close main method
+} // close main class MethodChallenge
 
 
 //if (score < 5000 && score > 1000){
