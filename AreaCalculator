@@ -1,0 +1,55 @@
+//Area Calculator:
+// Write a method called area with one double parameter named radius
+    // the method needs to return a double value that represents the area of a circle
+        // if the parameter radius is negative:
+            // return -1.0 to represent an invalid value.
+
+// Write another overloaded method with two parameters x and y: both doubles
+    // x and y represent the sides of a rectangle
+        // the method needs to return an area of a rectangle.
+        //if either or both parameters is/are a negative:
+            // return -1.0 to indicate an invalid value
+
+// the formulas and PI value are:
+// Area of rectangle: x*y
+//Area of circle: radius * radius * PI
+        //Tip for PI: use a constant from Math class Math.PI
+
+// Goal: is to create two methods that will compute the area of either a circle or a rectangle.
+// Method 1 will only take in 1 value, therefore, will compute area of circle
+// Method 2 will take in 2 values, therefore, will compute the area of a rectangle
+
+public class AreaCalculator {
+
+    // Method 1: area of circle
+    public static double area (double radius){
+
+        //set variable for formula of area of circle:
+        double area = (radius * radius) * Math.PI;
+        if (radius < 0 ){
+            return -1.0;
+        } else {
+            return area;
+        } // close else
+    } // close area circle method
+
+    public static double area (double x, double y){
+        double area = x * y;
+
+        if ((x < 0) || (y < 0)){
+            return -1.0;
+        } else {
+            return area;
+        }
+    }
+
+    public static void main (String[]args){
+        System.out.println(area(5.0));
+        System.out.println(area(-1));
+        System.out.println(area(5.0, 4.0));
+        System.out.println(area(-1.0,4.0));
+
+    }
+
+} // close class
+
