@@ -15,6 +15,10 @@ for (double rate = 2.0; rate <= 5.0; rate++){
 
  for ( double rate2 = 7.5; rate2 <= 10.0; rate2 += 0.25 ) {
      double interestAmount2 = calculateInterest(100, rate2);
+     // adding a break to break out of a loop
+     if (interestAmount2 > 8.5){
+         break;
+     } // close break
      System.out.println("100 at " + rate2 + "% interest = $" + interestAmount2);
  };
     } // close main method
