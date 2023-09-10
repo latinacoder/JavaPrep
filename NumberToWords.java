@@ -14,88 +14,98 @@ public class NumberToWords {
             numberToWords(-12);
         }
 
-        public static void numberToWords(int number) {
-            if (number < 0) {
-                System.out.println("Invalid Value");
-                return;
+
+    public static int reverse(int number) {
+        int reversed = 0; // Initialize the variable to store the reversed number
+        int workNumber = 0; // Initialize a temporary variable to store the last digit
+
+        while (number != 0) { // Continue until all digits are processed
+            workNumber = number % 10; // Get the last digit
+            number /= 10; // Remove the last digit from the original number
+            reversed += workNumber; // Add the last digit to the reversed number
+
+            if (number != 0) {
+                reversed *= 10; // Multiply by 10 to shift digits left if there are more digits to process
             }
+        }
+        return reversed; // Return the reversed number
+    }
 
-            int reversedNumber = reverse(number); // Reverse the given number
-            int digitCount = getDigitCount(number); // Get the count of digits in the original number
-            int reversedDigitCount = getDigitCount(reversedNumber); // Get the count of digits in the reversed number
+    public static void numberToWords(int number) {
+        if (number < 0) {
+            System.out.println("Invalid Value");
+        }
+        if (number == 0) {
+            System.out.println("Zero");
+        }
+        int numDigit = getDigitCount(number); // Get the count of digits in the original number
+        int revDigit = getDigitCount(reverse(number)); // Get the count of digits in the reversed number
+        int zerosToPrint = numDigit - revDigit; // Calculate the number of leading zeros to print
+        number = reverse(number); // Reverse the number for word conversion
+        int printNumber = 0; // Initialize a variable to store each digit
 
-            while (reversedNumber > 0) {
-                int lastDigit = reversedNumber % 10;
-                reversedNumber /= 10;
-
-                // Print the word corresponding to the last digit
-                switch (lastDigit) {
-                    case 0:
-                        System.out.println("Zero");
-                        break;
-                    case 1:
-                        System.out.println("One");
-                        break;
-                    case 2:
-                        System.out.println("Two");
-                        break;
-                    case 3:
-                        System.out.println("Three");
-                        break;
-                    case 4:
-                        System.out.println("Four");
-                        break;
-                    case 5:
-                        System.out.println("Five");
-                        break;
-                    case 6:
-                        System.out.println("Six");
-                        break;
-                    case 7:
-                        System.out.println("Seven");
-                        break;
-                    case 8:
-                        System.out.println("Eight");
-                        break;
-                    case 9:
-                        System.out.println("Nine");
-                        break;
-                }
-            }
-
-            // Print additional zeroes if needed to match the digit count of the original number
-            if (digitCount > reversedDigitCount) {
-                int zeroCount = digitCount - reversedDigitCount;
-                for (int i = 0; i < zeroCount; i++) {
+        while (number > 0) {
+            printNumber = number % 10; // Get the last digit
+            switch (printNumber) {
+                case 0:
                     System.out.println("Zero");
-                }
+                    break;
+                case 1:
+                    System.out.println("One");
+                    break;
+                case 2:
+                    System.out.println("Two");
+                    break;
+                case 3:
+                    System.out.println("Three");
+                    break;
+                case 4:
+                    System.out.println("Four");
+                    break;
+                case 5:
+                    System.out.println("Five");
+                    break;
+                case 6:
+                    System.out.println("Six");
+                    break;
+                case 7:
+                    System.out.println("Seven");
+                    break;
+                case 8:
+                    System.out.println("Eight");
+                    break;
+                case 9:
+                    System.out.println("Nine");
+                    break;
             }
+            number /= 10; // Remove the last digit
         }
 
-        public static int reverse(int number) {
-            int reversedNumber = 0;
-            while (number != 0) {
-                int lastDigit = number % 10;
-                reversedNumber = reversedNumber * 10 + lastDigit; // Build the reversed number
-                number /= 10; // Remove the last digit
-            }
-            return reversedNumber;
-        }
-
-        public static int getDigitCount(int number) {
-            if (number < 0) {
-                return -1;
-            }
-
-            int count = 0;
-            do {
-                count++;
-                number /= 10; // Remove the last digit
-            } while (number > 0);
-
-            return count;
+        for (int i = 0; i < zerosToPrint; i++) {
+            System.out.println("Zero"); // Print leading zeros
         }
     }
+
+    public static int getDigitCount(int number) {
+        if (number < 0) {
+            return -1; // Return -1 for negative numbers
+        }
+        if (number == 0) {
+            return 1; // Return 1 for zero
+        }
+        int digitCount = 0; // Initialize a variable to count digits
+        for (int i = 0; number > 0; i++) {
+            number /= 10; // Remove the last digit
+            digitCount++; // Increment the digit count
+        }
+        return digitCount; // Return the digit count
+    }
+
+
+
+
+
+}
 
 
 //RATIONALE:
