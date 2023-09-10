@@ -1,0 +1,43 @@
+package Section6;
+
+//Goal: to add the first digit and the last digit of a number
+
+// logic:
+//  1. check if negative, return -1
+//  2. initialize 2 variables: 'firstDigit' and 'lastDigit'
+//  2a. lastDigit is calculated when %10
+//  3. start a while loop that continues as long as the number is greater than 0.
+//  3a. inside the loop: if the number is less than 10, it means we have reached the first digit (or the only digit) of the original number.
+//  3b. if number is less than 10 (it means that we have reached the ones place), and therefore the firstDigit = number
+//  3c. we can assign the value firstDigit to 'number'
+//      we do this by: remove the last digit by dividing it by 10;
+//  return firstDigit + last
+public class FirstLastDigitSum {
+    public static int sumFirstAndLastDigit (int number){
+
+        // initialize variables:
+        int firstDigit = 0;
+        int lastDigit = (number % 10);
+
+        // prepare for negative values:
+        if (number < 0){
+            return -1;
+        }
+
+        //while loop to run through number from right to left and extract first digit
+
+        while (number > 0){ // while number is greater than 0
+            if (number < 10){   // if the number is less than 10,
+                firstDigit = number;
+            }
+            //otherwise:
+            number = (number / 10) ; // remove the last digit in a loop that will stop once the number is less than 10
+        } return firstDigit + lastDigit;
+
+    }
+
+    public static void main(String[] args) {
+        System.out.println(sumFirstAndLastDigit(121));
+    }
+
+}
