@@ -1,0 +1,24 @@
+// the do while loop will first excecute code "do" and then check condition "while()"
+// the while loop will first check condiition, and then execute code
+
+package Section6;
+
+public class WhileVSForLoop {
+
+
+    public static void main(String[] args) {
+        //while loop example
+        int count = 1; //init
+        while (count <= 5){  // condition
+            System.out.println("count = " + count);
+            count++; //increment
+        } //close while loop
+
+        // for loop example
+        for (int i = 0; i <= 5; i++){   // init; condition; increment
+            System.out.println("i = " + i);
+        }
+
+    } //close psvm
+
+}
